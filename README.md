@@ -8,7 +8,6 @@ examples that use [specifications for containers](https://www.github.com/opensch
  that are under development. The goal is to demonstrate utility in being able to 
 label a Dockerfile (a container recipe) and then different ideas for how this could be done.
 
-
 ## Why should I care?
 
 Labeling our containers and container recipes with schema.org metadata means that
@@ -18,12 +17,13 @@ your container and recipes will (finally) be discoverable.
 
 ## What examples are here?
 
-Toward this goal, we are going to walk through several examples representing a Dockerfile
-as each of:
+Toward this goal, we are going to walk through several simple examples 
+representing a Dockerfile as each of:
 
- - [ContainerRecipe](ContainerRecipe)
- - [SoftwareSourceCode](SoftwareSourceCode)
+ - [ContainerRecipe](ContainerRecipe) extraction shown [here](https://openbases.github.io/extracter-dockerfile/ContainerRecipe/index.html).
+ - [SoftwareSourceCode](SoftwareSourceCode) extraction shown [here](https://openbases.github.io/extracter-dockerfile/SoftwareSourceCode/index.html)
 
+The examples are minimal in that the pages only provide the metadata. 
 Each folder above includes a script to extract (`extract.py`), 
 a recipe to follow (`recipe.yml`), and the specification in yaml format (in the 
 case of a specification not served by production schema.org). When you view
