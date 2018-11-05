@@ -20,10 +20,14 @@ your container and recipes will (finally) be discoverable.
 Toward this goal, we are going to walk through several simple examples 
 representing a Dockerfile as each of:
 
- - [ContainerRecipe](ContainerRecipe) extraction (source) shown [here](view-source:https://openbases.github.io/extractor-dockerfile/ContainerRecipe/index.html).
- - [SoftwareSourceCode](SoftwareSourceCode) extraction shown [here](view-source:https://openbases.github.io/extractor-dockerfile/SoftwareSourceCode/index.html)
+ - [ContainerRecipe](ContainerRecipe) extraction (source) shown [here](https://openbases.github.io/extractor-dockerfile/ContainerRecipe/index.html).
+ - [SoftwareSourceCode](SoftwareSourceCode) extraction shown [here](https://openbases.github.io/extractor-dockerfile/SoftwareSourceCode/index.html)
 
-The examples are minimal in that the pages only provide the metadata. 
+For each of the above, the metadata shown is also embedded in the page as json-ld
+(when you "View Source.") The examples are minimal in that I didn't do any special
+parsing of the containers to extract more meaningful tags for software, this would
+be valuable to do to improve the search.
+
 Each folder above includes a script to extract (`extract.py`), 
 a recipe to follow (`recipe.yml`), and the specification in yaml format (in the 
 case of a specification not served by production schema.org). When you view
