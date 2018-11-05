@@ -16,7 +16,7 @@ wget https://raw.githubusercontent.com/openschemas/spec-container/gh-pages/_yaml
 
 The example is similar to the first, but also includes properties that are defined here
 that are more specific to a Container Recipe. This would be my preference for the fields to 
-capture for such an object. See the script [extract.py] as an example.
+capture for such an object. See the script [extract.py](extract.py) as an example.
 
 ```bash
 python extract.py
