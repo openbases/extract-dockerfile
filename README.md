@@ -1,4 +1,4 @@
-# Schemaorg Dockerfile Parser
+# Schema.org Dockerfile Parser
 
 ![https://github.com/openschemas/spec-template/raw/master/img/hexagon_square_small.png](https://github.com/openschemas/spec-template/raw/master/img/hexagon_square_small.png)
 

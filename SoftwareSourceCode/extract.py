@@ -37,9 +37,18 @@ from schemaorg.main import Schema
 ## Thing > CreativeWork > SoftwareSourceCode
 ################################################################################
 
+import os
+
+# Step 0. Define absolute paths to our Dockerfile, recipe, output
+
+here = os.path.abspath(os.path.dirname(__file__))
+recipe_yml = os.path.join(here, "recipe.yml")
+index_html = os.path.join(here, "index.html")
+dockerfile = os.path.join(os.path.dirname(here), "Dockerfile")
+
 # Step 1: Show required and recommended fields from recipe
 
-recipe = RecipeParser("recipe.yml")
+recipe = RecipeParser(recipe_yml)
 print(recipe.loaded)
 
 # Step 2: Generate a Person (these are Google Helper functions)
@@ -52,7 +61,7 @@ person = make_person(name="@vsoch",
 # Step 3: Create SoftwareSourceCode
 
 from spython.main.parse import DockerRecipe
-parser = DockerRecipe("../Dockerfile")
+parser = DockerRecipe(dockerfile)
 
 sourceCode = Schema("SoftwareSourceCode")
 
@@ -75,5 +84,5 @@ recipe.validate(sourceCode)
 # Step 5b: Generate dataset, meaning writing metadata into template.
 #          If we provide an output file it, it would write to it.
 
-dataset = make_dataset(sourceCode)
+dataset = make_dataset(sourceCode, index_html)
 print(dataset)

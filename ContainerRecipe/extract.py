@@ -42,19 +42,29 @@ from schemaorg.main import Schema
 ## Thing > CreativeWork > SoftwareSourceCode > ContainerRecipe
 ################################################################################
 
+import os
+
+# Step 0. Define absolute paths to our Dockerfile, recipe, output
+
+here = os.path.abspath(os.path.dirname(__file__))
+recipe_yml = os.path.join(here, "recipe.yml")
+index_html = os.path.join(here, "index.html")
+spec_yml = os.path.join(here, "specification.yml")
+dockerfile = os.path.join(os.path.dirname(here), "Dockerfile")
+
 # Step 1: Read in the (custom) yaml file as a custom (under development) Schema
 
-containerRecipe = Schema("specification.yml")
+containerRecipe = Schema(spec_yml)
 
 # Step 2: Show required and recommended fields from recipe
 
-recipe = RecipeParser("recipe.yml")
+recipe = RecipeParser(recipe_yml)
 print(recipe.loaded)
 
 # Step 3: Extract Container Things! First, the recipe file
 
 from spython.main.parse import DockerRecipe
-parser = DockerRecipe("../Dockerfile")
+parser = DockerRecipe(dockerfile)
 
 # containerRecipe.properties
 
@@ -114,5 +124,5 @@ if response['return_code'] == 0:
 
 # Step 6. When above is done, generate json-ld
 from schemaorg.templates.google import make_dataset
-dataset = make_dataset(containerRecipe)
+dataset = make_dataset(containerRecipe, index_html)
 print(dataset)
