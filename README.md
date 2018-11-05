@@ -91,5 +91,3 @@ Check out any of the subfolders for:
 
  - [ContainerRecipe](ContainerRecipe)
  - [SoftwareSourceCode](SoftwareSourceCode)
-
-*under development*
