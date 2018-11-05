@@ -20,8 +20,8 @@ your container and recipes will (finally) be discoverable.
 Toward this goal, we are going to walk through several simple examples 
 representing a Dockerfile as each of:
 
- - [ContainerRecipe](ContainerRecipe) extraction (source) shown [here](https://openbases.github.io/extractor-dockerfile/ContainerRecipe/index.html).
- - [SoftwareSourceCode](SoftwareSourceCode) extraction shown [here](https://openbases.github.io/extractor-dockerfile/SoftwareSourceCode/index.html)
+ - [ContainerRecipe](ContainerRecipe) extraction (source) shown [here](https://openbases.github.io/extract-dockerfile/ContainerRecipe/index.html).
+ - [SoftwareSourceCode](SoftwareSourceCode) extraction shown [here](https://openbases.github.io/extract-dockerfile/SoftwareSourceCode/index.html)
 
 For each of the above, the metadata shown is also embedded in the page as json-ld
 (when you "View Source.") The examples are minimal in that I didn't do any special
@@ -31,7 +31,7 @@ be valuable to do to improve the search.
 Each folder above includes a script to extract (`extract.py`), 
 a recipe to follow (`recipe.yml`), and the specification in yaml format (in the 
 case of a specification not served by production schema.org). When you view
-the [github pages](https://openbases.github.io/extractor-dockerfile) of this 
+the [github pages](https://openbases.github.io/extract-dockerfile) of this 
 repository served by the master branch, you will see that the `index.html` 
 in each folder serves a simple page to show the extracted metadata. The 
 [Dockerfile](Dockerfile) is the recipe that we aim to describe using schema.org,
