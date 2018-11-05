@@ -13,15 +13,36 @@ label a Dockerfile (a container recipe) and then different ideas for how this co
 Labeling our containers and container recipes with schema.org metadata means that
 we can serve it alongside the containers, and have the properties indexed by Google Search.
 This means that regardless of where your recipe is hosted (a registry or Github pages)
-your container and recipes will (finally) be discoverable.
+your container and recipes will (finally) be discoverable. Note that the official
+definition for a container "recipe" has not been integrated into schema.org, and we
+have had [good discussion](https://groups.google.com/a/opencontainers.org/forum/#!topic/dev/vEupyIGtvJs) with the OCI community about a proper name. Any of the
+following would be a good contender:
+
+```bash
+Thing > CreativeWork > SoftwareSourceCode > BuildDefinition
+Thing > CreativeWork > SoftwareSourceCode > BuildInstructions
+Thing > CreativeWork > SoftwareSourceCode > BuildPlan
+Thing > CreativeWork > SoftwareSourceCode > BuildRecipe
+Thing > CreativeWork > SoftwareSourceCode > Configuration
+Thing > CreativeWork > SoftwareSourceCode > ContainerConfig
+Thing > CreativeWork > SoftwareSourceCode > ImageDefinition
+```
+
+Just to provide you with more examples (for the same position in the hierarchy)
+I have used several of the names above in the examples below. The only significantly
+different is the "SoftwareSourceCode" that cuts away some of the additional recipe
+metadata. This is also the only specification that is production schema.org.
 
 ## What examples are here?
 
 Toward this goal, we are going to walk through several simple examples 
 representing a Dockerfile as each of:
 
- - [ContainerRecipe](ContainerRecipe) extraction (source) shown [here](https://openbases.github.io/extract-dockerfile/ContainerRecipe/index.html).
- - [SoftwareSourceCode](SoftwareSourceCode) extraction shown [here](https://openbases.github.io/extract-dockerfile/SoftwareSourceCode/index.html)
+ - [ImageDefinition](ImageDefinition) extraction shown [here](https://openbases.github.io/extract-dockerfile/ImageDefinition/).
+ - [ContainerRecipe](ContainerRecipe) extraction shown [here](https://openbases.github.io/extract-dockerfile/ContainerRecipe/).
+ - [SoftwareSourceCode](SoftwareSourceCode) extraction shown [here](https://openbases.github.io/extract-dockerfile/SoftwareSourceCode/). This is a specification 
+[already defined](https://schema.org/SoftwareSourceCode) in schema.org, 
+but does little to describe a Dockerfile in detail.
 
 For each of the above, the metadata shown is also embedded in the page as json-ld
 (when you "View Source.") The examples are minimal in that I didn't do any special
@@ -93,5 +114,12 @@ to generate the final template page. This file could be run in multiple places!
 
 Check out any of the subfolders for:
 
+ - [ImageDefinition](ImageDefinition)
  - [ContainerRecipe](ContainerRecipe)
  - [SoftwareSourceCode](SoftwareSourceCode)
+
+## Resources
+
+ - [Open Container Initative](https://github.com/opencontainers/)
+ - [Google Datasets](https://www.blog.google/products/search/making-it-easier-discover-datasets/)
+ - [Schemaorg Discussion](https://github.com/schemaorg/schemaorg/issues/2059#issuecomment-427208907)

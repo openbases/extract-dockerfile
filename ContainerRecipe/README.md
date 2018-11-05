@@ -9,7 +9,7 @@ specification is the following:
 Thing > CreativeWork > SoftwareSourceCode > ContainerRecipe
 ```
 
-Instead of being fully represented in the library here, is represented with the [ContainerRecipe.yml](ContainerRecipe.yml) file here that was obtained from [here](https://raw.githubusercontent.com/openschemas/spec-container/gh-pages/_yaml/ContainerRecipe.yml).
+Instead of being fully represented in the library here, is represented with the [specification.yml](ContainerRecipe.yml) file here that was obtained from [here](https://raw.githubusercontent.com/openschemas/spec-container/gh-pages/_yaml/ContainerRecipe.yml).
 
 ```bash
 wget https://raw.githubusercontent.com/openschemas/spec-container/gh-pages/_yaml/ContainerRecipe.yml
@@ -17,10 +17,10 @@ wget https://raw.githubusercontent.com/openschemas/spec-container/gh-pages/_yaml
 
 The example is similar to the first, but also includes properties that are defined here
 that are more specific to a Container Recipe. This would be my preference for the fields to 
-capture for such an object. See the script [extract_ContainerRecipe.py] as an example.
+capture for such an object. See the script [extract.py] as an example.
 
 ```bash
-python extract_ContainerRecipe.py
+python extract.py
 ```
 ```html
 <script type="application/ld+json">
@@ -55,7 +55,5 @@ python extract_ContainerRecipe.py
 </script>
 ```
 
-The above is missing the most important part - tags based on the software found with
-container-diff! I need to do some poking around to see how I want to do this.
-
-**being written**
+The above is missing the most important part - extraction of the softwareRequirements!
+See the [ImageDefinition](../ImageDefinition) for an example of doing this.
