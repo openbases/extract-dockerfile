@@ -60,8 +60,8 @@ person = make_person(name="@vsoch",
 
 # Step 3: Create SoftwareSourceCode
 
-from spython.main.parse import DockerRecipe
-parser = DockerRecipe(dockerfile)
+from spython.main.parse.parsers.docker import DockerParser
+docker_recipe = DockerParser(dockerfile).parse()
 
 sourceCode = Schema("SoftwareSourceCode")
 
@@ -70,7 +70,7 @@ sourceCode = Schema("SoftwareSourceCode")
 sourceCode.add_property('creator', person)
 sourceCode.add_property('version', sourceCode.version)
 sourceCode.add_property('description', 'A Dockerfile build recipe')
-sourceCode.add_property('name', parser.fromHeader)
+sourceCode.add_property('name', docker_recipe.fromHeader)
 
 
 # Step 4: Validate Data Structure
