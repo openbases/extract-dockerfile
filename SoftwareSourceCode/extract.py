@@ -60,8 +60,8 @@ person = make_person(name="@vsoch",
 
 # Step 3: Create SoftwareSourceCode
 
-from spython.main.parse import DockerRecipe
-parser = DockerRecipe(dockerfile)
+from spython.main.parse.parsers import DockerParser
+parser = DockerParser(dockerfile).parse()
 
 sourceCode = Schema("SoftwareSourceCode")
 

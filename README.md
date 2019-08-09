@@ -66,10 +66,12 @@ Before running these examples, make sure you have installed the module (and note
 this module is under development, contributions are welcome!)
 
 ```bash
-pip install schemaorg
+$ pip install spython>=0.0.72
+$ pip install schemaorg
 ```
 
-To extract a recipe for a particular datatype, just run the `extract.py` file
+And you'll need to install [ContainerDiff](https://github.com/GoogleContainerTools/container-diff)
+for the container examples. To extract a recipe for a particular datatype, just run the `extract.py` file
 in the corresponding folder. You can look at any of the extractors to get a gist
 of what we do to generate the final metadata for Github pages. Generally we:
 

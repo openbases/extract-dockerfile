@@ -63,8 +63,8 @@ print(recipe.loaded)
 
 # Step 3: Extract Container Things! First, the recipe file
 
-from spython.main.parse import DockerRecipe
-parser = DockerRecipe(dockerfile)
+from spython.main.parse.parsers import DockerParser
+parser = DockerParser(dockerfile).parse()
 
 # See definitions at containerRecipe._properties.keys()
 
@@ -117,6 +117,8 @@ containerRecipe.add_property("keywords", keywords)
 
 # Note to readers - we can parse an ImageDefinition from a manifest!
 # manifest['ContainerConfig'] And it has a name! Hmm.
+
+print("Running container-diff... this might take a minute!")
 
 # Container Diff
 response = run_command(["container-diff", "analyze", uri,

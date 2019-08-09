@@ -1,0 +1,2 @@
+spython>=0.0.72
+schemaorg>=0.0.21
