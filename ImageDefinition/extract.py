@@ -63,8 +63,9 @@ print(recipe.loaded)
 
 # Step 3: Extract Container Things! First, the recipe file
 
-from spython.main.parse import DockerRecipe
-parser = DockerRecipe(dockerfile)
+from spython.main.parse.parsers.docker import DockerParser
+docker_recipe = DockerParser(dockerfile).parse()
+
 
 # See definitions at containerRecipe._properties.keys()
 
@@ -72,13 +73,13 @@ parser = DockerRecipe(dockerfile)
 # containerRecipe.properties
 
 containerRecipe.add_property('version', containerRecipe.version)
-containerRecipe.add_property('environment', parser.environ) # currently a list
-containerRecipe.add_property('entrypoint', parser.entrypoint)
+containerRecipe.add_property('environment', docker_recipe.environ) # currently a list
+containerRecipe.add_property('entrypoint', docker_recipe.entrypoint)
 containerRecipe.add_property('description', 'A Dockerfile build recipe')
 
 # This would be extracted at build --> push time, so we know the uri.
 containerRecipe.add_property('name', "vanessa/sregistry")
-containerRecipe.add_property('ContainerImage', parser.fromHeader)
+containerRecipe.add_property('ContainerImage', docker_recipe.fromHeader)
 
 
 # Step 4: Validate Data Structure

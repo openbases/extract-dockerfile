@@ -63,20 +63,21 @@ print(recipe.loaded)
 
 # Step 3: Extract Container Things! First, the recipe file
 
-from spython.main.parse import DockerRecipe
-parser = DockerRecipe(dockerfile)
+from spython.main.parse.parsers.docker import DockerParser
+docker_recipe = DockerParser(dockerfile).parse()
+
 
 # containerRecipe.properties
 
 containerRecipe.add_property('version', containerRecipe.version)
-containerRecipe.add_property('labels', parser.labels) # currently lists
-containerRecipe.add_property('environment', parser.environ) # currently a list
-containerRecipe.add_property('entrypoint', parser.entrypoint)
+containerRecipe.add_property('labels', docker_recipe.labels) # currently lists
+containerRecipe.add_property('environment', docker_recipe.environ) # currently a list
+containerRecipe.add_property('entrypoint', docker_recipe.entrypoint)
 containerRecipe.add_property('description', 'A Dockerfile build recipe')
 
 # This would be extracted at build --> push time, so we know the uri.
 containerRecipe.add_property('name', "toasterlint/storjshare-cli")
-containerRecipe.add_property('ContainerImage', parser.fromHeader)
+containerRecipe.add_property('ContainerImage', docker_recipe.fromHeader)
 
 
 # Step 4: Validate Data Structure
@@ -96,12 +97,10 @@ response = run_command(['docker', 'pull', uri])    # Pull
 response = run_command(['docker', 'inspect', uri]) # Inspect
 if response['return_code'] == 0:
     manifest = json.loads(response['message'])[0]
-    
-
-# Add more (not required) fields - some of these belon with ContainerImage
-containerRecipe.add_property('operatingSystem', manifest['Os']) 
-containerRecipe.add_property('softwareVersion', manifest['Id'])  # shasum
-containerRecipe.add_property('identifier', manifest['RepoTags']) # tag
+    # Add more (not required) fields - some of these belon with ContainerImage
+    containerRecipe.add_property('operatingSystem', manifest['Os']) 
+    containerRecipe.add_property('softwareVersion', manifest['Id'])  # shasum
+    containerRecipe.add_property('identifier', manifest['RepoTags']) # tag
 
 # Note to readers - we can parse a ContainerRecipe from a manifest!
 # manifest['ContainerConfig'] And it has a name! Hmm.

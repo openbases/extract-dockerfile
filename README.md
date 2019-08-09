@@ -62,11 +62,12 @@ and is for the container [toasterlint/storjshare-cli](https://hub.docker.com/r/t
 
 # Usage
 
-Before running these examples, make sure you have installed the module (and note
-this module is under development, contributions are welcome!)
+Before running these examples, make sure you have installed the required Python
+modules (note that [schemaorg](https://www.github.com/openschemas/schemaorg) module is under
+development, contributions are welcome!)
 
 ```bash
-pip install schemaorg
+pip install -r requirements.txt
 ```
 
 To extract a recipe for a particular datatype, just run the `extract.py` file

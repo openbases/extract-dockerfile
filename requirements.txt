@@ -1,0 +1,6 @@
+# Both dependencies are in 0.0.x and may change at any 
+# time, therefore we lock down the version for now.
+# See https://semver.org/spec/v2.0.0.html#spec-item-4
+schemaorg==0.0.21
+spython==0.0.73
+
