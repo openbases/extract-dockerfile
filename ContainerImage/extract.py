@@ -4,15 +4,15 @@
 This script will demonstrate how we can extract metadata from a Dockerfile,
 and then generate a (html) web template to serve with it so that it is
 able to be indexed by Google Datasets (or ideally, similar with the recipe
-as a ImageDefinition).
+as a ContainerImage).
 
 Author: @vsoch
 November 6, 2018 (no longer Halloween :( )
 
-This is a "custom" specification (ImageDefinition) that is represented in the 
+This is a "custom" specification (ContainerImage) that is represented in the 
 local file, recipe.yml. It fits into schema.org like this:
 
-    Thing > CreativeWork > SoftwareSourceCode > ImageDefinition
+    Thing > CreativeWork > SoftwareSourceCode > ContainerImage
 
 Other suggestions from the OCI Community for fitting names:
 
@@ -115,7 +115,7 @@ containerRecipe.add_property('citation', publication)
 containerRecipe.add_property("license", license)
 containerRecipe.add_property("keywords", keywords)
 
-# Note to readers - we can parse an ImageDefinition from a manifest!
+# Note to readers - we can parse an ContainerImage from a manifest!
 # manifest['ContainerConfig'] And it has a name! Hmm.
 
 print("Running container-diff... this might take a minute!")

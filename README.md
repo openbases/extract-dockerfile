@@ -118,7 +118,7 @@ to generate the final template page. This file could be run in multiple places!
 
 Check out any of the subfolders for:
 
- - [ImageDefinition](ImageDefinition)
+ - [ContainerImage](ContainerImage)
  - [ContainerRecipe](ContainerRecipe)
  - [SoftwareSourceCode](SoftwareSourceCode)
 

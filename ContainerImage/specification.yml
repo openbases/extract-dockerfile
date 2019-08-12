@@ -1,8 +1,8 @@
 description: This Container profile specification presents a representation of a Container
   such as Docker or Singularity that is used in scientific compute.
-edit_url: https://github.com/openschemas/specifications/tree/master/ImageDefinition/specification.html
-gh_folder: https://github.com/openschemas/specifications/tree/master/ImageDefinition
-gh_tasks: https://github.com/openschemas/specifications/labels/type%3A%20ImageDefinition
+edit_url: https://github.com/openschemas/specifications/tree/master/ContainerImage/specification.html
+gh_folder: https://github.com/openschemas/specifications/tree/master/ContainerImage
+gh_tasks: https://github.com/openschemas/specifications/labels/type%3A%20ContainerImage
 hierarchy: [Thing, CreativeWork, SoftwareSourceCode]
 mapping:
 - bsc_description: ''
@@ -25,20 +25,20 @@ mapping:
     "singularity" }'
   expected_types: [Text]
   marginality: Optional
-  parent: ImageDefinition
+  parent: ContainerImage
   property: applicationCategory
   type: ''
   type_url: ''
-- bsc_description: The command for a ImageDefinition is typically a set of extra arguments
+- bsc_description: The command for a ContainerImage is typically a set of extra arguments
     that are added to the entrypoint in a default running scenario
   cardinality: MANY
   controlled_vocab: ''
-  description: The command for a ImageDefinition is typically a set of extra arguments
+  description: The command for a ContainerImage is typically a set of extra arguments
     that are added to the entrypoint in a default running scenario
   example: ''
   expected_types: [Text]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: brands
   type: ''
   type_url: ''
@@ -51,7 +51,7 @@ mapping:
   example: ''
   expected_types: [Text]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: brands
   type: ''
   type_url: ''
@@ -77,7 +77,7 @@ mapping:
   example: ''
   expected_types: [ContainerImage]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: ContainerImage
   type: ''
   type_url: ''
@@ -127,7 +127,7 @@ mapping:
     }'
   expected_types: [URL]
   marginality: Optional
-  parent: ImageDefinition
+  parent: ContainerImage
   property: downloadUrl
   type: ''
   type_url: ''
@@ -140,7 +140,7 @@ mapping:
   example: ''
   expected_types: [Text]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: entrypoint
   type: ''
   type_url: ''
@@ -153,7 +153,7 @@ mapping:
     "http://edamontology.org/topic_0128"] }'
   expected_types: [Text, URL]
   marginality: Minimum
-  parent: ImageDefinition
+  parent: ContainerImage
   property: featureList
   type: ''
   type_url: ''
@@ -180,7 +180,7 @@ mapping:
   example: ''
   expected_types: [Text]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: help
   type: ''
   type_url: ''
@@ -209,7 +209,7 @@ mapping:
     "http://edamontology.org/data_2976"] }'
   expected_types: [URL]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: input
   type: external
   type_url: http://semanticscience.org/resource/SIO_000230
@@ -226,7 +226,7 @@ mapping:
   property: keywords
   type: ''
   type_url: ''
-- bsc_description: a list of keywords to describe the ContainerImage that the ImageDefinition
+- bsc_description: a list of keywords to describe the ContainerImage that the ContainerImage
     will build
   cardinality: MANY
   controlled_vocab: ''
@@ -247,7 +247,7 @@ mapping:
   example: ''
   expected_types: [Text]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: environment
   type: ''
   type_url: ''
@@ -260,7 +260,7 @@ mapping:
   example: ''
   expected_types: [Text]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: labels
   type: ''
   type_url: ''
@@ -298,7 +298,7 @@ mapping:
     7 or above", "Linux/Unix", "Mac/Apple"] }'
   expected_types: [Text]
   marginality: Optional
-  parent: ImageDefinition
+  parent: ContainerImage
   property: operatingSystem
   type: ''
   type_url: ''
@@ -311,7 +311,7 @@ mapping:
     "http://edamontology.org/data_1384"] }'
   expected_types: [URL]
   marginality: Recommended
-  parent: ImageDefinition
+  parent: ContainerImage
   property: output
   type: external
   type_url: http://semanticscience.org/resource/SIO_000229
@@ -337,7 +337,7 @@ mapping:
     }'
   expected_types: [CreativeWork]
   marginality: Optional
-  parent: ImageDefinition
+  parent: ContainerImage
   property: softwareHelp
   type: ''
   type_url: ''
@@ -352,7 +352,7 @@ mapping:
     "JRE 8.0 or above" }'
   expected_types: [Text, URL]
   marginality: Optional
-  parent: ImageDefinition
+  parent: ContainerImage
   property: softwareRequirements
   type: ''
   type_url: ''
@@ -364,12 +364,12 @@ mapping:
     }'
   expected_types: [Text]
   marginality: Minimum
-  parent: ImageDefinition
+  parent: ContainerImage
   property: softwareVersion
   type: ''
   type_url: ''
 - bsc_description: URL of the container, typically associated with a registry that
-    shows the ImageDefinition, vulnerability scans, and other metadata. This property
+    shows the ContainerImage, vulnerability scans, and other metadata. This property
     can be used on a page listing many containers to indicate each individual container's
     page.
   cardinality: ONE
@@ -382,11 +382,11 @@ mapping:
   property: url
   type: ''
   type_url: ''
-name: ImageDefinition
+name: ContainerImage
 parent_type: SoftwareSourceCode
 spec_info: {description: This Container profile specification presents a representation
     of a Container such as Docker or Singularity that is used in scientific compute.,
-  full_example: 'https://www.github.com/openschemas/specifications/tree/master/ImageDefinition/examples/',
+  full_example: 'https://www.github.com/openschemas/specifications/tree/master/ContainerImage/examples/',
   version: 0.0.1, version_date: 20181021T214745}
 spec_type: Profile
 status: revision
