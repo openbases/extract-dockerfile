@@ -63,12 +63,16 @@ and is for the container [toasterlint/storjshare-cli](https://hub.docker.com/r/t
 # Usage
 
 Before running these examples, make sure you have installed the module (and note
-this module is under development, contributions are welcome!)
+this module is under development, contributions are welcome!) An install.sh script
+is provided that will install Singularity python (spython), Schema Org Python (schemaorg)
+along with ContainerDiff.
 
 ```bash
-pip install schemaorg
+$ /bin/bash install.sh
 ```
 
+For those curious, [ContainerDiff](https://github.com/GoogleContainerTools/container-diff)
+allows extraction of different metadata for containers. 
 To extract a recipe for a particular datatype, just run the `extract.py` file
 in the corresponding folder. You can look at any of the extractors to get a gist
 of what we do to generate the final metadata for Github pages. Generally we:
@@ -101,7 +105,7 @@ folder because this isn't a production specification provided by schema.org. For
 those that are published (e.g., SoftwareSourceCode and Dataset) the definitions are
 provided in the python module.
 
-### extractor.py
+### extract.py
 
 This is the code snippet that shows how you extract metadata and use the 
 [schemaorg](https://www.github.com/openschemas/schemaorg) Python module
@@ -114,7 +118,7 @@ to generate the final template page. This file could be run in multiple places!
 
 Check out any of the subfolders for:
 
- - [ImageDefinition](ImageDefinition)
+ - [ContainerImage](ContainerImage)
  - [ContainerRecipe](ContainerRecipe)
  - [SoftwareSourceCode](SoftwareSourceCode)
 

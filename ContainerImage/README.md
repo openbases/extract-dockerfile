@@ -1,11 +1,11 @@
-## Example 2: ImageDefinition from a Dockerfile
+## Example 2: ContainerImage from a Dockerfile
 
 This third example is for a specification that is also not production, but represents
-an ImageDefinition (ContainerRecipe, call it what you wish!) with the following
+an ContainerImage (ContainerRecipe, call it what you wish!) with the following
 organization:
 
 ```bash
-Thing > CreativeWork > SoftwareSourceCode > ImageDefinition
+Thing > CreativeWork > SoftwareSourceCode > ContainerImage
 ```
 
 Instead of being fully represented in the library here, is represented with the [specification.yml](specification.yml) file here modified from [here](https://raw.githubusercontent.com/openschemas/spec-container/gh-pages/_yaml/ContainerRecipe.yml).

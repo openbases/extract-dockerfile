@@ -29,7 +29,7 @@
 
 version: 1
 schemas:
-  ImageDefinition:
+  ContainerImage:
     recommended:
       - keywords
       - labels

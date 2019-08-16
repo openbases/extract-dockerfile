@@ -63,8 +63,8 @@ print(recipe.loaded)
 
 # Step 3: Extract Container Things! First, the recipe file
 
-from spython.main.parse import DockerRecipe
-parser = DockerRecipe(dockerfile)
+from spython.main.parse.parsers import DockerParser
+parser = DockerParser(dockerfile).parse()
 
 # containerRecipe.properties
 
@@ -75,7 +75,7 @@ containerRecipe.add_property('entrypoint', parser.entrypoint)
 containerRecipe.add_property('description', 'A Dockerfile build recipe')
 
 # This would be extracted at build --> push time, so we know the uri.
-containerRecipe.add_property('name', "toasterlint/storjshare-cli")
+containerRecipe.add_property('name', "vsoch/salad")
 containerRecipe.add_property('ContainerImage', parser.fromHeader)
 
 
@@ -91,36 +91,40 @@ import json
 
 ### BELOW should be defined with ContainerImage, as the attributes are from the
 # ImageManifest I'm not modeling that here, so we can add them to the example
+# Note that if the image doesn't exist, we can't get a manifest
 uri = containerRecipe.properties['name']
 response = run_command(['docker', 'pull', uri])    # Pull
 response = run_command(['docker', 'inspect', uri]) # Inspect
 if response['return_code'] == 0:
     manifest = json.loads(response['message'])[0]
-    
 
-# Add more (not required) fields - some of these belon with ContainerImage
-containerRecipe.add_property('operatingSystem', manifest['Os']) 
-containerRecipe.add_property('softwareVersion', manifest['Id'])  # shasum
-containerRecipe.add_property('identifier', manifest['RepoTags']) # tag
+    # Add more (not required) fields - some of these belon with ContainerImage
+    containerRecipe.add_property('operatingSystem', manifest['Os']) 
+    containerRecipe.add_property('softwareVersion', manifest['Id'])  # shasum
+    containerRecipe.add_property('identifier', manifest['RepoTags']) # tag
+
+    # Container Diff
+    response = run_command(["container-diff", "analyze", uri,
+                            "--type=pip", "--type=file", "--type=apt", "--type=history",
+                            "--json", '--quiet','--verbosity=panic'])
+
+    # note that we can also get pip, apt, packages here...
+    if response['return_code'] == 0:
+        layers = json.loads(response['message'])
+        for layer in layers:
+            if layer['AnalyzeType'] == "File":
+                print('Found %s files!' %len(layer['Analysis']))
+
+    # Found 12615 files!
+    # Here we can go to town parsing the guts to label the container meaningfully
+    # TODO: we need some lamma magic / NLP here to extract software tokens
+
+else:
+    print("Return value is not zero, %s" % response['message'])    
+
 
 # Note to readers - we can parse a ContainerRecipe from a manifest!
 # manifest['ContainerConfig'] And it has a name! Hmm.
-
-# Container Diff
-response = run_command(["container-diff", "analyze", uri,
-                        "--type=pip", "--type=file", "--type=apt", "--type=history",
-                        "--json", '--quiet','--verbosity=panic'])
-
-# note that we can also get pip, apt, packages here...
-if response['return_code'] == 0:
-    layers = json.loads(response['message'])
-    for layer in layers:
-        if layer['AnalyzeType'] == "File":
-            print('Found %s files!' %len(layer['Analysis']))
-
-# Found 12615 files!
-# Here we can go to town parsing the guts to label the container meaningfully
-# TODO: we need some lamma magic / NLP here to extract software tokens
 
 # Step 6. When above is done, generate json-ld
 from schemaorg.templates.google import make_dataset
